@@ -6,7 +6,7 @@ function settime() {
     let hour2 = date.getHours();
 
     if (minute < 10) {
-        minute = '0' + minute
+        minute = `0${minute}`
     }
 
     document.querySelector('.header').classList.toggle('hidden')
