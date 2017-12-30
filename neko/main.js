@@ -20,6 +20,16 @@ let links = {
     }
 };
 
+let lines = [
+    'How are you?',
+    'Have a good day!',
+    'Kiss :3',
+    '... HUG!',
+    'I want food',
+    'Get a snack!',
+    'Love you!'
+];
+
 function init() {
     let link_container = document.getElementsByClassName('links')[0];
 
@@ -44,6 +54,14 @@ function init() {
             ul.appendChild(li).appendChild(a);
         }
     }
+
+    headline();
+}
+
+function headline() {
+    let x = Math.floor(Math.random() * lines.length);
+
+    document.querySelector('.header h1').innerHTML = lines[x];
 }
 
 document.addEventListener('DOMContentLoaded', init() );

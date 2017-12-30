@@ -7,7 +7,7 @@
 $background: #f1f1f1;
 $text: #282828;
 $highlight: #00b2ff;
-$highlight2: #ff0040;
+$highlight2: #f7babc;
 
 html,
 body {
@@ -49,7 +49,7 @@ body {
 h1 {
     font-family: 'Alegreya', serif;
     font-weight: 700;
-    font-size: 3rem;
+    font-size: 3.2rem;
     margin: 0;
 }
 
@@ -137,25 +137,20 @@ a {
     }
 }
 
-input {
-    font-family: 'Alegreya', serif;
-    font-weight: 700;
-    font-size: 3rem;
-    margin: 0;
-    padding: 0;
-    color: $text;
+.header {
+    position: relative;
 
-    border: none;
-    background-color: transparent;
-    opacity: 1;
+    img {
+        width: 300px;
+    }
 
-    text-align: center;
-}
-
-input:focus {
-    background-color: black;
-}
-
-.search:focus {
-    background-color: black;
+    h1 {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        filter: blur(0.5px);
+        padding-bottom: 40px;
+        margin: auto;
+    }
 }
