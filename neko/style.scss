@@ -78,6 +78,7 @@ a {
     text-decoration: none;
     color: $text;
     padding: 0.4rem;
+    outline: 0;
     z-index: 1;
 
     transition: all 0.25s ease;
@@ -151,7 +152,6 @@ a {
         bottom: 0;
         left: 0;
         right: 0;
-        filter: blur(0.5px);
         padding-bottom: 40px;
         margin: auto;
     }
