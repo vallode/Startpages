@@ -1,3 +1,9 @@
+/*
+    Pretty simple structure here to populate links:
+    Category name -> Link name : Link
+    Enjoy :)
+ */
+
 let links = {
     'social': {
         'facebook': 'https://www.facebook.com/',
@@ -20,12 +26,16 @@ let links = {
     }
 };
 
+/*
+    Add a few lines for the kitty kat to welcome you with!
+ */
+
 let lines = [
     'How are you?',
     'Have a good day!',
     'Kiss :3',
-    '... HUG!',
-    'I want food',
+    'HUG!',
+    'I want food...',
     'Get a snack!',
     'Love you!'
 ];
