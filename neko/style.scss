@@ -17,9 +17,9 @@ body {
 
     margin: 0;
     padding: 0;
-
-    background: linear-gradient(270deg, $background, darken($background, 15%));
-    background-size: 600% 600%;
+    // background: #f1f1f1;
+    background: linear-gradient(270deg, $background, darken($background, 5%), darken($background, 10%), darken($background, 15%));
+    background-size: 400% 400%;
 
     color: $text;
     font-size: 16px;
