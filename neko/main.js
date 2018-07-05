@@ -5,24 +5,25 @@
  */
 
 let links = {
-    'social': {
-        'facebook': 'https://www.facebook.com/',
-        'instagram': 'https://www.instagram.com/'
-    },
-
-    'papes': {
-        '/wg/': 'https://boards.4chan.org/wg/',
-        'unsplash': 'https://unsplash.com/'
+    'utility': {
+	    'goodreads': 'https://www.goodreads.com/',
+	    'todoist': 'https://todoist.com/',
+        'hackernews': 'https://news.ycombinator.com/',
     },
 
     'work': {
-        'MDN': 'https://developer.mozilla.org/en-US/',
-        'Trello': 'https://trello.com/'
+        'Slack': 'https://slack.com/',
+        'Trello': 'https://trello.com/',
+        'Wrike': 'https://www.wrike.com',
+	    'heroku': 'https://dashboard.heroku.com/',
     },
 
     'misc.': {
         '127': '127.0.0.1',
-        'Mixtape': 'https://mixtape.moe/'
+        'Drive': 'https://drive.google.com/drive/my-drive',
+        'Mixtape': 'https://mixtape.moe/',
+        'Webmaster': 'https://www.google.com/webmasters/tools/home?hl=en',
+        'Analytics': 'https://analytics.google.com/analytics/web',
     }
 };
 
@@ -31,13 +32,9 @@ let links = {
  */
 
 let lines = [
-    'How are you?',
+    'Draw!',
+    'Read something!',
     'Have a good day!',
-    'Kiss :3',
-    'HUG!',
-    'I want food...',
-    'Get a snack!',
-    'Love you!'
 ];
 
 function init() {

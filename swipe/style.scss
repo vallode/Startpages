@@ -1,0 +1,171 @@
+@charset "UTF-8";
+
+// SCSS Variables
+
+$colour1: #443dcc;
+$colour2: #cc4849;
+$colour3: #8ab3cc;
+$colour4: #cc84ac;
+
+$colours: $colour1, $colour2, $colour3, $colour4, $colour1, $colour2, $colour3, $colour4;
+
+// Basics
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+
+    height: 100%;
+}
+
+body {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    color: #f1f1f1;
+    background-color: #0a0a0a;
+    overflow: hidden;
+
+    box-sizing: border-box;
+}
+
+*, *::before, *::after {
+    box-sizing: inherit;
+}
+
+// Typography
+
+h1 {
+    align-self: center;
+    text-transform: lowercase;
+
+    padding: 0.2rem;
+}
+
+ul {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+
+    padding: 0.2rem 0.8rem;
+    margin: 0.5rem 1rem;
+
+    min-width: 150px;
+
+    list-style-type: none;
+
+    @for $i from 1 through 4 {
+        &:nth-of-type(#{$i}) {
+            border-top: solid 2px nth($colours, $i);
+        }
+    }
+
+    @media screen and (max-width: 800px){
+        min-width: 40%;
+    }
+}
+
+// Layout
+
+main {
+    display: flex;
+    flex-flow: column wrap;
+}
+
+#menu {
+    display: flex;
+    flex-flow: row wrap;
+}
+
+// Animation
+
+#lines {
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    filter: brightness(0.8);
+    z-index: 100;
+
+    div {
+        position: absolute;
+        height: 15vh;
+        width: 2vh;
+
+        transform: translateY(-100vh);
+
+        border-radius: 4px;
+
+        background-color: #443dcc;
+
+        will-change: transform;
+    }
+
+    @for $i from 1 through 8 {
+        div:nth-child(#{$i}) {
+            height: calc(400px + #{$i} * 30px);
+            left: calc(45px * #{$i});
+            background-color: nth($colours, $i);
+
+            animation: falling#{$i} (random(1) + 2 + s) (random() + s) (cubic-bezier(0, 0, 1, 1)) infinite;
+
+            @keyframes falling#{$i} {
+                0% {
+                    transform: perspective(150px) rotate(56deg) translate3d(0, -150%, 50px);
+                }
+
+                100% {
+                    transform: perspective(150px) rotate(56deg) translate3d(0, 150%, 50px);
+                }
+            }
+        }
+    }
+}
+
+
+#back_lines {
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    filter: brightness(0.2);
+    z-index: -1000;
+
+    div {
+        position: absolute;
+        height: 15vh;
+        width: 2vh;
+
+        transform: translateY(-100vh);
+
+        border-radius: 4px;
+
+        background-color: #443dcc;
+
+        will-change: transform;
+    }
+
+    @for $i from 1 through 5 {
+
+        div:nth-child(#{$i}) {
+            height: calc(400px + #{$i} * 30px);
+            left: calc(85px * #{$i});
+            background-color: nth($colours, $i);
+
+            animation: back_falling#{$i} (random(2) + 2 + s) (random() + s) (cubic-bezier(0, 0, 1, 1)) infinite;
+
+            @keyframes back_falling#{$i} {
+                0% {
+                    transform: perspective(150px) rotate(56deg) translate3d(0, -350%, -125px);
+                }
+
+                100% {
+                    transform: perspective(150px) rotate(56deg) translate3d(0, 250%, -125px);
+                }
+            }
+        }
+    }
+}
