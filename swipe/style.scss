@@ -110,7 +110,7 @@ main {
             left: calc(45px * #{$i});
             background-color: nth($colours, $i);
 
-            animation: falling#{$i} (random(1) + 2 + s) (random() + s) (cubic-bezier(0, 0, 1, 1)) infinite;
+            animation: falling#{$i} (random(8) + 2 + s) (random() + s) (cubic-bezier(0, 0, 1, 1)) infinite;
 
             @keyframes falling#{$i} {
                 0% {
