@@ -1,4 +1,4 @@
-Weather.setApiKey('ef56dc643a9796dae1f3a11acef15e98');
+Weather.setApiKey('');
 
 Weather.getCurrent("London", (current) => {
 
