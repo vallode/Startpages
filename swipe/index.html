@@ -5,7 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Swipe</title>
 
+    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
     <link rel='stylesheet' href='style.css'>
+
+    <script defer src="weather.min.js"></script>
+    <script defer src="main.js"></script>
 </head>
 <body>
 
@@ -31,6 +35,14 @@
 
 <main>
     <h1>Breathe</h1>
+    <div id="info">
+        <p id="weather">
+            Sunny
+        </p>
+        <p id="temperature">
+            30C
+        </p>
+    </div>
 
     <div id="menu">
         <ul>
@@ -39,6 +51,8 @@
             <li>hackernews</li>
             <li>Hello</li>
             <li>Hello</li>
+
+            <li class="highlight"></li>
         </ul>
 
         <ul>
@@ -47,6 +61,8 @@
             <li>wrike</li>
             <li>heroku</li>
             <li>Hello</li>
+
+            <li class="highlight"></li>
         </ul>
 
         <ul>
@@ -55,6 +71,8 @@
             <li>mixtape</li>
             <li>webmaster</li>
             <li>analytics</li>
+
+            <li class="highlight"></li>
         </ul>
 
         <ul>
@@ -63,6 +81,8 @@
             <li>duck</li>
             <li>goose</li>
             <li>run!</li>
+
+            <li class="highlight"></li>
         </ul>
     </div>
 </main>

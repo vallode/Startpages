@@ -30,6 +30,9 @@ body {
     overflow: hidden;
 
     box-sizing: border-box;
+
+    font-family: 'Lato', sans-serif;
+    letter-spacing: 0.05rem;
 }
 
 *, *::before, *::after {
@@ -39,13 +42,15 @@ body {
 // Typography
 
 h1 {
+    position: relative;
     align-self: center;
     text-transform: lowercase;
 
-    padding: 0.2rem;
+    margin-bottom: 0;
 }
 
 ul {
+    position: relative;
     display: flex;
     flex-direction: column;
     flex: 1;
@@ -57,13 +62,46 @@ ul {
 
     list-style-type: none;
 
-    @for $i from 1 through 4 {
-        &:nth-of-type(#{$i}) {
-            border-top: solid 2px nth($colours, $i);
+    li {
+        position: relative;
+        z-index: 2;
+    }
+
+    @for $i from 1 through 5 {
+        li:nth-of-type(#{$i}):hover ~ li.highlight {
+            top: calc(19px * #{$i} - 5.5px);
+            width: 50px;
+            right: 0;
         }
     }
 
-    @media screen and (max-width: 800px){
+    li.highlight {
+        content: '';
+        position: absolute;
+        width: calc(100% - 1.6rem);
+        height: 2px;
+
+        top: -4px;
+        right: 0.8rem;
+        z-index: -1;
+
+        transition: all 0.225s ease;
+    }
+
+    @for $i from 1 through 4 {
+        &:nth-of-type(#{$i}) li.highlight {
+            opacity: 0.3;
+            background-color: nth($colours, $i);
+        }
+
+        &:hover li.highlight {
+            opacity: 1;
+            height: 4px;
+            top: -6px;
+        }
+    }
+
+    @media screen and (max-width: 800px) {
         min-width: 40%;
     }
 }
@@ -73,22 +111,42 @@ ul {
 main {
     display: flex;
     flex-flow: column wrap;
+
+    z-index: 1;
 }
 
 #menu {
     display: flex;
     flex-flow: row wrap;
+
+    text-transform: lowercase;
+}
+
+#info {
+    display: flex;
+    flex-flow: row wrap;
+
+    justify-content: center;
+
+    p {
+        font-size: 0.7rem;
+        margin: 0 0 0.5rem 0;
+        padding: 0 0.5rem;
+    }
 }
 
 // Animation
 
-#lines {
-    position: absolute;
+#lines,
+#back_lines {
+    position: fixed;
     top: 0;
     left: 0;
+}
 
+#lines {
     filter: brightness(0.8);
-    z-index: 100;
+    z-index: -1;
 
     div {
         position: absolute;
@@ -114,25 +172,20 @@ main {
 
             @keyframes falling#{$i} {
                 0% {
-                    transform: perspective(150px) rotate(56deg) translate3d(0, -150%, 50px);
+                    transform: perspective(150px) translate3d(0, -100vh, 50px);
                 }
 
                 100% {
-                    transform: perspective(150px) rotate(56deg) translate3d(0, 150%, 50px);
+                    transform: perspective(150px) translate3d(0, 100vh, 50px);
                 }
             }
         }
     }
 }
 
-
 #back_lines {
-    position: absolute;
-    top: 0;
-    left: 0;
-
     filter: brightness(0.2);
-    z-index: -1000;
+    z-index: -2;
 
     div {
         position: absolute;
@@ -149,7 +202,6 @@ main {
     }
 
     @for $i from 1 through 5 {
-
         div:nth-child(#{$i}) {
             height: calc(400px + #{$i} * 30px);
             left: calc(85px * #{$i});
@@ -159,11 +211,11 @@ main {
 
             @keyframes back_falling#{$i} {
                 0% {
-                    transform: perspective(150px) rotate(56deg) translate3d(0, -350%, -125px);
+                    transform: perspective(150px) translate3d(0, -100vh, -125px);
                 }
 
                 100% {
-                    transform: perspective(150px) rotate(56deg) translate3d(0, 250%, -125px);
+                    transform: perspective(150px) translate3d(0, 200vh, -125px);
                 }
             }
         }
