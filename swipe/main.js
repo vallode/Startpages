@@ -1,10 +1,12 @@
+/* Important, get an api code from https://openweathermap.org/api and change it here */
+Weather.setApiKey("");
+
 /*
-    Pretty simple structure here to populate links:
+    Fill with links you want
     {} -> 'Link name' : 'Link'
-    Enjoy :)
  */
 
-let links = [
+const links = [
     {
         'goodreads': 'https://www.goodreads.com/',
         'todoist': 'https://todoist.com/',
@@ -34,31 +36,31 @@ let links = [
     },
 ];
 
+/* Ideally don't need to touch anything after this line :) */
+
 document.addEventListener("DOMContentLoaded", () => {
     document.getElementById("menu").innerText = '';
-    for (let group in links) {
+    links.forEach(group => {
         let ul = document.createElement("ul");
 
-        for (let link in links[group]) {
+        for (const [key, value] of Object.entries(group)) {
             let li = document.createElement("li");
-            let a = document.createElement("a");
-            a.innerText = link;
-            a.href = links[group][link];
-            li.appendChild(a);
-
             ul.appendChild(li);
+
+            let a = document.createElement("a");
+            a.href = value;
+            a.innerText = key;
+
+            li.appendChild(a);
         }
 
         let highlight = document.createElement("li");
-        highlight.classList.add("highlight");
+        highlight.className = "highlight";
         ul.appendChild(highlight);
 
         document.getElementById("menu").appendChild(ul)
-    }
+    });
 });
-
-
-Weather.setApiKey('');
 
 Weather.getCurrent("London", (current) => {
 
@@ -67,6 +69,5 @@ Weather.getCurrent("London", (current) => {
     let temp_celsius = Math.floor(Weather.kelvinToCelsius(current.temperature()));
 
     document.getElementById("weather").innerText = weather;
-
     document.getElementById("temperature").innerText = temp_celsius.toString() + String.fromCharCode(176) + 'C';
 });
