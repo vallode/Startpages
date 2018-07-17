@@ -1,11 +1,21 @@
 @charset "UTF-8";
 
+// This is for WAL imports
+@import url('file:///home/vallode/.cache/wal/colors.css');
+
 // SCSS Variables
 
+/* If you do not have WAL uncomment the lines below and comment out the other set
 $colour_blue: #443dcc;
 $colour_red: #cc4849;
 $colour_cyan: #8ab3cc;
 $colour_pink: #cc84ac;
+*/
+
+$colour_blue: var(--color3);
+$colour_red: var(--color6);
+$colour_cyan: var(--color9);
+$colour_pink: var(--color12);
 
 $colours: $colour_blue, $colour_red, $colour_cyan, $colour_pink, $colour_blue, $colour_red, $colour_cyan, $colour_pink;
 
@@ -25,8 +35,8 @@ body {
     justify-content: center;
     align-items: center;
 
-    color: #f1f1f1;
-    background-color: #0a0a0a;
+    color: var(--color7);
+    background-color: var(--color0);
     overflow: hidden;
 
     box-sizing: border-box;
@@ -52,7 +62,7 @@ h1 {
 a {
     position: relative;
     text-decoration: none;
-    color: #f1f1f1;
+    color: inherit;
 }
 
 ul {
@@ -148,41 +158,41 @@ main {
     position: fixed;
     top: 0;
     left: 0;
+
+    div {
+        position: absolute;
+        min-width: 10px;
+        width: 3vh;
+
+        border-radius: 4px;
+
+        will-change: transform;
+    }
 }
 
 #lines {
     filter: brightness(0.8);
     z-index: -1;
 
-    div {
-        position: absolute;
-        height: 15vh;
-        width: 2vh;
-
-        transform: translateY(-100vh);
-
-        border-radius: 4px;
-
-        background-color: #443dcc;
-
-        will-change: transform;
-    }
-
     @for $i from 1 through 8 {
         div:nth-child(#{$i}) {
-            height: calc(400px + #{$i} * 30px);
-            left: calc(45px * #{$i});
-            background-color: nth($colours, $i);
+            --height: calc(600px + #{$i} * 30px);
+            --offset: calc(var(--height) + 100vh);
 
-            animation: falling#{$i} (random(8) + 2 + s) (random() + s) (cubic-bezier(0, 0, 1, 1)) infinite;
+            height: var(--height);
+            top: calc(0px - var(--height));
+            left: calc(45px * #{$i});
+
+            background-color: nth($colours, $i);
+            animation: falling#{$i} (random(6) + 2 + s) (random() + s) (cubic-bezier(0, 0, 1, 1)) infinite;
 
             @keyframes falling#{$i} {
                 0% {
-                    transform: perspective(150px) translate3d(0, -100vh, 50px);
+                    transform: translate3d(0, 0, 0);
                 }
 
                 100% {
-                    transform: perspective(150px) translate3d(0, 100vh, 50px);
+                    transform: translate3d(0, var(--offset), 0);
                 }
             }
         }
@@ -193,35 +203,26 @@ main {
     filter: brightness(0.2);
     z-index: -2;
 
-    div {
-        position: absolute;
-        height: 15vh;
-        width: 2vh;
-
-        transform: translateY(-100vh);
-
-        border-radius: 4px;
-
-        background-color: #443dcc;
-
-        will-change: transform;
-    }
-
     @for $i from 1 through 5 {
         div:nth-child(#{$i}) {
-            height: calc(400px + #{$i} * 30px);
-            left: calc(85px * #{$i});
-            background-color: nth($colours, $i);
+            --height: calc(200px + #{$i} * 30px);
+            --offset: calc(var(--height) + 100vh);
 
+            height: var(--height);
+            width: 1vh;
+            top: calc(0px - var(--height));
+            left: calc(85px * #{$i});
+
+            background-color: nth($colours, $i);
             animation: back_falling#{$i} (random(2) + 2 + s) (random() + s) (cubic-bezier(0, 0, 1, 1)) infinite;
 
             @keyframes back_falling#{$i} {
                 0% {
-                    transform: perspective(150px) translate3d(0, -100vh, -125px);
+                    transform: translate3d(0, 0, 0);
                 }
 
                 100% {
-                    transform: perspective(150px) translate3d(0, 200vh, -125px);
+                    transform: translate3d(0, var(--offset), 0);
                 }
             }
         }
